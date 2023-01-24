@@ -1,4 +1,4 @@
-n = '22 * 300 - 14 + 10 * 10 * 10 + 20 * 2'
+n = '22 * 300 / 7 - 14 + 10 * 10 * 10 + 20 * 2 / 3'
 
 m = n.split()
 m2 = []
@@ -17,23 +17,23 @@ def calc(a, b, ch):
     elif ch == '*':
         return a * b
 
-result = int(m[0])
+result = float(m[0])
 
 past_op = ''
 
 for i in range(1, len(m) - 1, 2):
     if (m[i] == '*' or m[i] == '/') and (past_op == ''):
-        result = calc(int(m[i - 1]), int(m[i + 1]), m[i])
+        result = calc(float(m[i - 1]), float(m[i + 1]), m[i])
         m2.append(result)
         past_op = m[i]
     elif (m[i] == '*' or m[i] == '/') and (past_op != ''):
-        result = calc(result, int(m[i + 1]), m[i])
+        result = calc(result, float(m[i + 1]), m[i])
         m2.pop(-1)
         m2.append(result)
         past_op = m[i]
     else:
         m2.append(m[i])
-        m2.append(int(m[i + 1]))
+        m2.append(float(m[i + 1]))
         past_op = ''
 
 past_digit = ''
@@ -53,9 +53,9 @@ for i in m2:
 print(m2)
 print(m3)
 
-result = int(m3[0])
+result = float(m3[0])
 
 for i in range(1, len(m3) - 1, 2):
-    result = calc(result, int(m3[i + 1]), m3[i])
+    result = calc(result, float(m3[i + 1]), m3[i])
 
 print(result)
