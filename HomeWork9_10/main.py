@@ -12,5 +12,6 @@ app = ApplicationBuilder().token("5807751052:AAF0wKkxtkG_DVkAxBe5Ae644jXJx5xPmvo
 
 app.add_handler(CommandHandler("hi", hi_command))
 app.add_handler(CommandHandler('sum', sum_command))
+app.add_handler(CommandHandler('new_year', new_year_command))
 
 app.run_polling()
